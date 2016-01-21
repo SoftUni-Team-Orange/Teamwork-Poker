@@ -9,11 +9,15 @@ using System.Windows.Forms;
 namespace Poker
 {
 
-    public partial class Form1 : Form
+    public partial class PokerForm : Form
     {
         #region Variables
-        ProgressBar asd = new ProgressBar();
-        public int Nm;
+
+        //ProgressBar progressBar = new ProgressBar();
+        //public int Nm;
+
+	    const string AssetsPath = @"..\..\Assets\";
+
         Panel pPanel = new Panel(); Panel b1Panel = new Panel(); Panel b2Panel = new Panel(); Panel b3Panel = new Panel();
         Panel b4Panel = new Panel(); Panel b5Panel = new Panel();
         int call = 500, foldedPlayers = 5;
@@ -32,18 +36,7 @@ namespace Poker
         List<int> ints = new List<int>();
         bool PFturn = false, Pturn = true, restart = false, raising = false;
         Poker.Type sorted;
-        string[] ImgLocation = Directory.GetFiles(@"..\..\Assets\Cards", "*.png", SearchOption.TopDirectoryOnly);
-        /*string[] ImgLocation ={
-                   "Assets\\Cards\\33.png","Assets\\Cards\\22.png",
-                    "Assets\\Cards\\29.png","Assets\\Cards\\21.png",
-                    "Assets\\Cards\\36.png","Assets\\Cards\\17.png",
-                    "Assets\\Cards\\40.png","Assets\\Cards\\16.png",
-                    "Assets\\Cards\\5.png","Assets\\Cards\\47.png",
-                    "Assets\\Cards\\37.png","Assets\\Cards\\13.png",
-                    
-                    "Assets\\Cards\\12.png",
-                    "Assets\\Cards\\8.png","Assets\\Cards\\18.png",
-                    "Assets\\Cards\\15.png","Assets\\Cards\\27.png"};*/
+        string[] ImgLocation = Directory.GetFiles(AssetsPath + @"Cards", "*.png", SearchOption.TopDirectoryOnly);
         int[] Reserve = new int[17];
         Image[] Deck = new Image[52];
         PictureBox[] Holder = new PictureBox[52];
@@ -51,7 +44,7 @@ namespace Poker
         Timer Updates = new Timer();
         int t = 60, i, bb = 500, sb = 250, up = 10000000, turnCount = 0;
         #endregion
-        public Form1()
+        public PokerForm()
         {
             //bools.Add(PFturn); bools.Add(B1Fturn); bools.Add(B2Fturn); bools.Add(B3Fturn); bools.Add(B4Fturn); bools.Add(B5Fturn);
             call = bb;
@@ -103,7 +96,7 @@ namespace Poker
             MaximizeBox = false;
             MinimizeBox = false;
             bool check = false;
-            Bitmap backImage = new Bitmap(@"..\..\Assets\Back\Back.png");
+            Bitmap backImage = new Bitmap(AssetsPath + @"Back\Back.png");
             int horizontal = 580, vertical = 480;
             Random r = new Random();
             for (i = ImgLocation.Length; i > 0; i--)
@@ -117,7 +110,7 @@ namespace Poker
             {
 
                 Deck[i] = Image.FromFile(ImgLocation[i]);
-                var charsToRemove = new string[] { @"..\..\Assets\Cards\", ".png" };
+                var charsToRemove = new string[] { AssetsPath + @"Cards\", ".png" };
                 foreach (var c in charsToRemove)
                 {
                     ImgLocation[i] = ImgLocation[i].Replace(c, string.Empty);
@@ -1992,7 +1985,7 @@ namespace Poker
                 last = 0;
                 call = bb;
                 Raise = 0;
-                ImgLocation = Directory.GetFiles(@"..\..\Assets\Cards", "*.png", SearchOption.TopDirectoryOnly);
+                ImgLocation = Directory.GetFiles(AssetsPath + @"Cards", "*.png", SearchOption.TopDirectoryOnly);
                 bools.Clear();
                 rounds = 0;
                 pPower = 0; pType = -1;
@@ -2246,7 +2239,7 @@ namespace Poker
                     bRaise.Text = "Raise";
                 }
             }
-            ImgLocation = Directory.GetFiles(@"..\..\Assets\Cards", "*.png", SearchOption.TopDirectoryOnly);
+            ImgLocation = Directory.GetFiles(AssetsPath + @"Cards", "*.png", SearchOption.TopDirectoryOnly);
             for (int os = 0; os < 17; os++)
             {
                 Holder[os].Image = null;
