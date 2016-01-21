@@ -165,8 +165,6 @@
         Timer Updates = new Timer();
         int t = 60;
 
-		int i;
-
 		int bb = 500;
 
 		int sb = 250;
@@ -232,7 +230,7 @@
             Bitmap backImage = new Bitmap(AssetsPath + @"Back\Back.png");
             int horizontal = 580, vertical = 480;
             Random r = new Random();
-            for (i = ImgLocation.Length; i > 0; i--)
+            for (int i = ImgLocation.Length; i > 0; i--)
             {
                 int j = r.Next(i);
                 var k = ImgLocation[j];
@@ -240,7 +238,7 @@
                 ImgLocation[i - 1] = k;
             }
 
-            for (i = 0; i < 17; i++)
+            for (int i = 0; i < 17; i++)
             {
 
                 Deck[i] = Image.FromFile(ImgLocation[i]);
@@ -882,7 +880,7 @@
                 var st4 = d.Select(o => o / 4).Distinct().ToArray();
                 Array.Sort(Straight); Array.Sort(st1); Array.Sort(st2); Array.Sort(st3); Array.Sort(st4);
                 
-                for (i = 0; i < 16; i++)
+                for (int i = 0; i < 16; i++)
                 {
                     if (Reserve[i] == int.Parse(Holder[c1].Tag.ToString()) && Reserve[i + 1] == int.Parse(Holder[c2].Tag.ToString()))
                     {
