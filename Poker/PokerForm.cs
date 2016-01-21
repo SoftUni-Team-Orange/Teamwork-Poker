@@ -165,6 +165,8 @@
         Timer Updates = new Timer();
         int t = 60;
 
+		int i;
+
 		int bb = 500;
 
 		int sb = 250;
