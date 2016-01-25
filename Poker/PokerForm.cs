@@ -17,11 +17,11 @@
         private const string AssetsPath = @"..\..\Assets\";
 
         private Panel playerPanel = new Panel();
-        private Panel b1Panel = new Panel();
-        private Panel b2Panel = new Panel();
-        private Panel b3Panel = new Panel();
-        private Panel b4Panel = new Panel();
-        private Panel b5Panel = new Panel();
+        private Panel firstBotPanel = new Panel();
+        private Panel secondBotPanel = new Panel();
+        private Panel thirdBotPanel = new Panel();
+        private Panel fourthBotPanel = new Panel();
+        private Panel fifthBotPlayer = new Panel();
         private int call = 500;
 
         private int foldedPlayers = 5;
@@ -310,12 +310,12 @@
 	                    Holder[i].Location = new Point(horizontal, vertical);
 	                    horizontal += Holder[i].Width;
 	                    Holder[i].Visible = true;
-	                    this.Controls.Add(b1Panel);
-	                    b1Panel.Location = new Point(Holder[2].Left - 10, Holder[2].Top - 10);
-	                    b1Panel.BackColor = Color.DarkBlue;
-	                    b1Panel.Height = 150;
-	                    b1Panel.Width = 180;
-	                    b1Panel.Visible = false;
+	                    this.Controls.Add(firstBotPanel);
+	                    firstBotPanel.Location = new Point(Holder[2].Left - 10, Holder[2].Top - 10);
+	                    firstBotPanel.BackColor = Color.DarkBlue;
+	                    firstBotPanel.Height = 150;
+	                    firstBotPanel.Width = 180;
+	                    firstBotPanel.Visible = false;
 	                    if (i == 3)
 	                    {
 		                    check = false;
@@ -348,12 +348,12 @@
 	                    Holder[i].Location = new Point(horizontal, vertical);
 	                    horizontal += Holder[i].Width;
 	                    Holder[i].Visible = true;
-	                    this.Controls.Add(b2Panel);
-	                    b2Panel.Location = new Point(Holder[4].Left - 10, Holder[4].Top - 10);
-	                    b2Panel.BackColor = Color.DarkBlue;
-	                    b2Panel.Height = 150;
-	                    b2Panel.Width = 180;
-	                    b2Panel.Visible = false;
+	                    this.Controls.Add(secondBotPanel);
+	                    secondBotPanel.Location = new Point(Holder[4].Left - 10, Holder[4].Top - 10);
+	                    secondBotPanel.BackColor = Color.DarkBlue;
+	                    secondBotPanel.Height = 150;
+	                    secondBotPanel.Width = 180;
+	                    secondBotPanel.Visible = false;
 	                    if (i == 5)
 	                    {
 		                    check = false;
@@ -386,12 +386,12 @@
 	                    Holder[i].Location = new Point(horizontal, vertical);
 	                    horizontal += Holder[i].Width;
 	                    Holder[i].Visible = true;
-	                    this.Controls.Add(b3Panel);
-	                    b3Panel.Location = new Point(Holder[6].Left - 10, Holder[6].Top - 10);
-	                    b3Panel.BackColor = Color.DarkBlue;
-	                    b3Panel.Height = 150;
-	                    b3Panel.Width = 180;
-	                    b3Panel.Visible = false;
+	                    this.Controls.Add(thirdBotPanel);
+	                    thirdBotPanel.Location = new Point(Holder[6].Left - 10, Holder[6].Top - 10);
+	                    thirdBotPanel.BackColor = Color.DarkBlue;
+	                    thirdBotPanel.Height = 150;
+	                    thirdBotPanel.Width = 180;
+	                    thirdBotPanel.Visible = false;
 	                    if (i == 7)
 	                    {
 		                    check = false;
@@ -424,12 +424,12 @@
 	                    Holder[i].Location = new Point(horizontal, vertical);
 	                    horizontal += Holder[i].Width;
 	                    Holder[i].Visible = true;
-	                    this.Controls.Add(b4Panel);
-	                    b4Panel.Location = new Point(Holder[8].Left - 10, Holder[8].Top - 10);
-	                    b4Panel.BackColor = Color.DarkBlue;
-	                    b4Panel.Height = 150;
-	                    b4Panel.Width = 180;
-	                    b4Panel.Visible = false;
+	                    this.Controls.Add(fourthBotPanel);
+	                    fourthBotPanel.Location = new Point(Holder[8].Left - 10, Holder[8].Top - 10);
+	                    fourthBotPanel.BackColor = Color.DarkBlue;
+	                    fourthBotPanel.Height = 150;
+	                    fourthBotPanel.Width = 180;
+	                    fourthBotPanel.Visible = false;
 	                    if (i == 9)
 	                    {
 		                    check = false;
@@ -462,12 +462,12 @@
 	                    Holder[i].Location = new Point(horizontal, vertical);
 	                    horizontal += Holder[i].Width;
 	                    Holder[i].Visible = true;
-	                    this.Controls.Add(b5Panel);
-	                    b5Panel.Location = new Point(Holder[10].Left - 10, Holder[10].Top - 10);
-	                    b5Panel.BackColor = Color.DarkBlue;
-	                    b5Panel.Height = 150;
-	                    b5Panel.Width = 180;
-	                    b5Panel.Visible = false;
+	                    this.Controls.Add(fifthBotPlayer);
+	                    fifthBotPlayer.Location = new Point(Holder[10].Left - 10, Holder[10].Top - 10);
+	                    fifthBotPlayer.BackColor = Color.DarkBlue;
+	                    fifthBotPlayer.Height = 150;
+	                    fifthBotPlayer.Width = 180;
+	                    fifthBotPlayer.Visible = false;
 	                    if (i == 11)
 	                    {
 		                    check = false;
@@ -478,13 +478,25 @@
                 if (i >= 12)
                 {
                     Holder[12].Tag = Reserve[12];
-                    if (i > 12) Holder[13].Tag = Reserve[13];
-                    if (i > 13) Holder[14].Tag = Reserve[14];
-                    if (i > 14) Holder[15].Tag = Reserve[15];
                     if (i > 15)
                     {
                         Holder[16].Tag = Reserve[16];
 
+                    }
+
+                    else if (i > 14)
+                    {
+                        Holder[15].Tag = Reserve[15];
+                    }
+
+                    else if (i > 13)
+                    {
+                        Holder[14].Tag = Reserve[14];
+                    }
+
+                    else if (i > 12)
+                    {
+                        Holder[13].Tag = Reserve[13];
                     }
 
                     if (!check)
@@ -2033,7 +2045,7 @@
 		                bot1Chips += int.Parse(tbPot.Text) / winners;
 		                tbBotChips1.Text = bot1Chips.ToString();
 
-		                // b1Panel.Visible = true;
+		                // firstBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 2"))
@@ -2041,7 +2053,7 @@
 		                bot2Chips += int.Parse(tbPot.Text) / winners;
 		                tbBotChips2.Text = bot2Chips.ToString();
 
-		                // b2Panel.Visible = true;
+		                // secondBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 3"))
@@ -2049,7 +2061,7 @@
 		                bot3Chips += int.Parse(tbPot.Text) / winners;
 		                tbBotChips3.Text = bot3Chips.ToString();
 
-		                // b3Panel.Visible = true;
+		                // thirdBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 4"))
@@ -2057,7 +2069,7 @@
 		                bot4Chips += int.Parse(tbPot.Text) / winners;
 		                tbBotChips4.Text = bot4Chips.ToString();
 
-		                // b4Panel.Visible = true;
+		                // fourthBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 5"))
@@ -2065,7 +2077,7 @@
 		                bot5Chips += int.Parse(tbPot.Text) / winners;
 		                tbBotChips5.Text = bot5Chips.ToString();
 
-		                // b5Panel.Visible = true;
+		                // fifthBotPlayer.Visible = true;
 	                }
 
 	                // await Finish(1);
@@ -2086,7 +2098,7 @@
 		                bot1Chips += int.Parse(tbPot.Text);
 
 		                // await Finish(1);
-		                // b1Panel.Visible = true;
+		                // firstBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 2"))
@@ -2094,7 +2106,7 @@
 		                bot2Chips += int.Parse(tbPot.Text);
 
 		                // await Finish(1);
-		                // b2Panel.Visible = true;
+		                // secondBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 3"))
@@ -2102,7 +2114,7 @@
 		                bot3Chips += int.Parse(tbPot.Text);
 
 		                // await Finish(1);
-		                // b3Panel.Visible = true;
+		                // thirdBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 4"))
@@ -2110,7 +2122,7 @@
 		                bot4Chips += int.Parse(tbPot.Text);
 
 		                // await Finish(1);
-		                // b4Panel.Visible = true;
+		                // fourthBotPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 5"))
@@ -2118,7 +2130,7 @@
 		                bot5Chips += int.Parse(tbPot.Text);
 
 		                // await Finish(1);
-		                // b5Panel.Visible = true;
+		                // fifthBotPlayer.Visible = true;
 	                }
                 }
             }
@@ -2286,7 +2298,7 @@
                     }
                 }
 
-                playerPanel.Visible = false; b1Panel.Visible = false; b2Panel.Visible = false; b3Panel.Visible = false; b4Panel.Visible = false; b5Panel.Visible = false;
+                playerPanel.Visible = false; firstBotPanel.Visible = false; secondBotPanel.Visible = false; thirdBotPanel.Visible = false; fourthBotPanel.Visible = false; fifthBotPlayer.Visible = false;
                 pCall = 0; pRaise = 0;
                 b1Call = 0; b1Raise = 0;
                 b2Call = 0; b2Raise = 0;
@@ -2469,7 +2481,7 @@
                 {
                     bot1Chips += int.Parse(tbPot.Text);
                     tbChips.Text = bot1Chips.ToString();
-                    b1Panel.Visible = true;
+                    firstBotPanel.Visible = true;
                     MessageBox.Show("Bot 1 Wins");
                 }
 
@@ -2477,7 +2489,7 @@
                 {
                     bot2Chips += int.Parse(tbPot.Text);
                     tbChips.Text = bot2Chips.ToString();
-                    b2Panel.Visible = true;
+                    secondBotPanel.Visible = true;
                     MessageBox.Show("Bot 2 Wins");
                 }
 
@@ -2485,7 +2497,7 @@
                 {
                     bot3Chips += int.Parse(tbPot.Text);
                     tbChips.Text = bot3Chips.ToString();
-                    b3Panel.Visible = true;
+                    thirdBotPanel.Visible = true;
                     MessageBox.Show("Bot 3 Wins");
                 }
 
@@ -2493,7 +2505,7 @@
                 {
                     bot4Chips += int.Parse(tbPot.Text);
                     tbChips.Text = bot4Chips.ToString();
-                    b4Panel.Visible = true;
+                    fourthBotPanel.Visible = true;
                     MessageBox.Show("Bot 4 Wins");
                 }
 
@@ -2501,7 +2513,7 @@
                 {
                     bot5Chips += int.Parse(tbPot.Text);
                     tbChips.Text = bot5Chips.ToString();
-                    b5Panel.Visible = true;
+                    fifthBotPlayer.Visible = true;
                     MessageBox.Show("Bot 5 Wins");
                 }
 
@@ -2535,11 +2547,11 @@
 	        }
 
 	        playerPanel.Visible = false;
-	        b1Panel.Visible = false;
-	        b2Panel.Visible = false;
-	        b3Panel.Visible = false;
-	        b4Panel.Visible = false;
-	        b5Panel.Visible = false;
+	        firstBotPanel.Visible = false;
+	        secondBotPanel.Visible = false;
+	        thirdBotPanel.Visible = false;
+	        fourthBotPanel.Visible = false;
+	        fifthBotPlayer.Visible = false;
 	        call = bb;
 	        Raise = 0;
 	        foldedPlayers = 5;
@@ -3506,5 +3518,10 @@
         }
 
         #endregion
+
+        private void PokerForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
