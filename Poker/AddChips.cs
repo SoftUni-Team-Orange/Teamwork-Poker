@@ -18,19 +18,19 @@
         public void button1_Click(object sender, EventArgs e)
         {
             int parsedValue;
-            if (int.Parse(textBox1.Text) > 100000000)
+            if (int.Parse(chip_txt.Text) > 100000000)
             {
                 MessageBox.Show("The maximium chips you can add is 100000000");
                 return;
             }
 
-            if (!int.TryParse(textBox1.Text, out parsedValue))
+            if (!int.TryParse(chip_txt.Text, out parsedValue))
             {
                 MessageBox.Show("This is a number only field");
             }
-            else if (int.TryParse(textBox1.Text, out parsedValue) && int.Parse(textBox1.Text) <= 100000000)
+            else if (int.TryParse(chip_txt.Text, out parsedValue) && int.Parse(chip_txt.Text) <= 100000000)
             {
-                a = int.Parse(textBox1.Text);
+                a = int.Parse(chip_txt.Text);
                 this.Close();
             }
         }
@@ -51,6 +51,11 @@
                     Application.Exit();
                     break;
             }
+        }
+
+        private void AddChips_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
