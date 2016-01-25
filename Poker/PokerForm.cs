@@ -14,25 +14,29 @@
 
         // ProgressBar progressBar = new ProgressBar();
         // public int Nm;
-	    const string AssetsPath = @"..\..\Assets\";
+        private const string AssetsPath = @"..\..\Assets\";
 
-        Panel pPanel = new Panel(); Panel b1Panel = new Panel(); Panel b2Panel = new Panel(); Panel b3Panel = new Panel();
-        Panel b4Panel = new Panel(); Panel b5Panel = new Panel();
-        int call = 500;
+        private Panel playerPanel = new Panel();
+        private Panel b1Panel = new Panel();
+        private Panel b2Panel = new Panel();
+        private Panel b3Panel = new Panel();
+        private Panel b4Panel = new Panel();
+        private Panel b5Panel = new Panel();
+        private int call = 500;
 
-		int foldedPlayers = 5;
+        private int foldedPlayers = 5;
 
-		public int Chips = 10000;
+        private int chips = 10000;
 
-		public int bot1Chips = 10000;
+        private int bot1Chips = 10000;
 
-		public int bot2Chips = 10000;
+        private int bot2Chips = 10000;
 
-		public int bot3Chips = 10000;
+        private int bot3Chips = 10000;
 
-		public int bot4Chips = 10000;
+        private int bot4Chips = 10000;
 
-		public int bot5Chips = 10000;
+        private int bot5Chips = 10000;
 
 		double type;
 
@@ -194,12 +198,12 @@
             tbBotChips3.Enabled = false;
             tbBotChips4.Enabled = false;
             tbBotChips5.Enabled = false;
-            tbChips.Text = "Chips : " + this.Chips;
-            tbBotChips1.Text = "Chips : " + this.bot1Chips;
-            tbBotChips2.Text = "Chips : " + this.bot2Chips;
-            tbBotChips3.Text = "Chips : " + this.bot3Chips;
-            tbBotChips4.Text = "Chips : " + this.bot4Chips;
-            tbBotChips5.Text = "Chips : " + this.bot5Chips;
+            tbChips.Text = "chips : " + this.chips;
+            tbBotChips1.Text = "chips : " + this.bot1Chips;
+            tbBotChips2.Text = "chips : " + this.bot2Chips;
+            tbBotChips3.Text = "chips : " + this.bot3Chips;
+            tbBotChips4.Text = "chips : " + this.bot4Chips;
+            tbBotChips5.Text = "chips : " + this.bot5Chips;
             timer.Interval = 1 * 1 * 1000;
             timer.Tick += timer_Tick;
             Updates.Interval = 1 * 1 * 100;
@@ -273,12 +277,12 @@
 	                // Holder[i].Dock = DockStyle.Top;
 	                Holder[i].Location = new Point(horizontal, vertical);
 	                horizontal += Holder[i].Width;
-	                this.Controls.Add(pPanel);
-	                pPanel.Location = new Point(Holder[0].Left - 10, Holder[0].Top - 10);
-	                pPanel.BackColor = Color.DarkBlue;
-	                pPanel.Height = 150;
-	                pPanel.Width = 180;
-	                pPanel.Visible = false;
+	                this.Controls.Add(playerPanel);
+	                playerPanel.Location = new Point(Holder[0].Left - 10, Holder[0].Top - 10);
+	                playerPanel.BackColor = Color.DarkBlue;
+	                playerPanel.Height = 150;
+	                playerPanel.Width = 180;
+	                playerPanel.Visible = false;
                 }
 
 	            if (bot1Chips > 0)
@@ -2018,10 +2022,10 @@
                 {
 	                if (CheckWinners.Contains("Player"))
 	                {
-		                Chips += int.Parse(tbPot.Text) / winners;
-		                tbChips.Text = Chips.ToString();
+		                this.chips += int.Parse(tbPot.Text) / winners;
+		                tbChips.Text = this.chips.ToString();
 
-		                // pPanel.Visible = true;
+		                // playerPanel.Visible = true;
 	                }
 
 	                if (CheckWinners.Contains("Bot 1"))
@@ -2071,10 +2075,10 @@
                 {
                     if (CheckWinners.Contains("Player"))
                     {
-	                    Chips += int.Parse(tbPot.Text);
+	                    this.chips += int.Parse(tbPot.Text);
 
 	                    // await Finish(1);
-	                    // pPanel.Visible = true;
+	                    // playerPanel.Visible = true;
                     }
 
 	                if (CheckWinners.Contains("Bot 1"))
@@ -2247,7 +2251,7 @@
                     Rules(10, 11, "Bot 5", ref b5Type, ref b5Power, B5Fturn);
                 }
 
-                Winner(pType, pPower, "Player", Chips, fixedLast);
+                Winner(pType, pPower, "Player", chips, fixedLast);
                 Winner(b1Type, b1Power, "Bot 1", bot1Chips, fixedLast);
                 Winner(b2Type, b2Power, "Bot 2", bot2Chips, fixedLast);
                 Winner(b3Type, b3Power, "Bot 3", bot3Chips, fixedLast);
@@ -2261,13 +2265,13 @@
                 B3Fturn = false;
                 B4Fturn = false;
                 B5Fturn = false;
-                if (Chips <= 0)
+                if (chips <= 0)
                 {
                     AddChips f2 = new AddChips();
                     f2.ShowDialog();
                     if (f2.a != 0)
                     {
-                        Chips = f2.a;
+                        chips = f2.a;
                         bot1Chips += f2.a;
                         bot2Chips += f2.a;
                         bot3Chips += f2.a;
@@ -2282,7 +2286,7 @@
                     }
                 }
 
-                pPanel.Visible = false; b1Panel.Visible = false; b2Panel.Visible = false; b3Panel.Visible = false; b4Panel.Visible = false; b5Panel.Visible = false;
+                playerPanel.Visible = false; b1Panel.Visible = false; b2Panel.Visible = false; b3Panel.Visible = false; b4Panel.Visible = false; b5Panel.Visible = false;
                 pCall = 0; pRaise = 0;
                 b1Call = 0; b1Raise = 0;
                 b2Call = 0; b2Raise = 0;
@@ -2368,17 +2372,17 @@
         async Task AllIn()
         {
             
-            if (Chips <= 0 && !intsadded)
+            if (chips <= 0 && !intsadded)
             {
                 if (pStatus.Text.Contains("Raise"))
                 {
-                    ints.Add(Chips);
+                    ints.Add(chips);
                     intsadded = true;
                 }
 
                 if (pStatus.Text.Contains("Call"))
                 {
-                    ints.Add(Chips);
+                    ints.Add(chips);
                     intsadded = true;
                 }
             }
@@ -2455,9 +2459,9 @@
                 int index = bools.IndexOf(false);
                 if (index == 0)
                 {
-                    Chips += int.Parse(tbPot.Text);
-                    tbChips.Text = Chips.ToString();
-                    pPanel.Visible = true;
+                    chips += int.Parse(tbPot.Text);
+                    tbChips.Text = chips.ToString();
+                    playerPanel.Visible = true;
                     MessageBox.Show("Player Wins");
                 }
 
@@ -2530,7 +2534,7 @@
 		        FixWinners();
 	        }
 
-	        pPanel.Visible = false;
+	        playerPanel.Visible = false;
 	        b1Panel.Visible = false;
 	        b2Panel.Visible = false;
 	        b3Panel.Visible = false;
@@ -2612,13 +2616,13 @@
 	        b3Status.Text = string.Empty;
 	        b4Status.Text = string.Empty;
 	        b5Status.Text = string.Empty;
-	        if (Chips <= 0)
+	        if (chips <= 0)
 	        {
 		        AddChips f2 = new AddChips();
 		        f2.ShowDialog();
 		        if (f2.a != 0)
 		        {
-			        Chips = f2.a;
+			        chips = f2.a;
 			        bot1Chips += f2.a;
 			        bot2Chips += f2.a;
 			        bot3Chips += f2.a;
@@ -2688,7 +2692,7 @@
                 Rules(10, 11, "Bot 5", ref b5Type, ref b5Power, B5Fturn);
             }
 
-            Winner(pType, pPower, "Player", Chips, fixedLast);
+            Winner(pType, pPower, "Player", chips, fixedLast);
             Winner(b1Type, b1Power, "Bot 1", bot1Chips, fixedLast);
             Winner(b2Type, b2Power, "Bot 2", bot2Chips, fixedLast);
             Winner(b3Type, b3Power, "Bot 3", bot3Chips, fixedLast);
@@ -3183,43 +3187,43 @@
 
         private void Update_Tick(object sender, object e)
         {
-            if (Chips <= 0)
+            if (chips <= 0)
             {
-                tbChips.Text = "Chips : 0";
+                tbChips.Text = "chips : 0";
             }
 
             if (bot1Chips <= 0)
             {
-                tbBotChips1.Text = "Chips : 0";
+                tbBotChips1.Text = "chips : 0";
             }
 
             if (bot2Chips <= 0)
             {
-                tbBotChips2.Text = "Chips : 0";
+                tbBotChips2.Text = "chips : 0";
             }
 
             if (bot3Chips <= 0)
             {
-                tbBotChips3.Text = "Chips : 0";
+                tbBotChips3.Text = "chips : 0";
             }
 
             if (bot4Chips <= 0)
             {
-                tbBotChips4.Text = "Chips : 0";
+                tbBotChips4.Text = "chips : 0";
             }
 
             if (bot5Chips <= 0)
             {
-                tbBotChips5.Text = "Chips : 0";
+                tbBotChips5.Text = "chips : 0";
             }
 
-            tbChips.Text = "Chips : " + this.Chips;
-            tbBotChips1.Text = "Chips : " + this.bot1Chips;
-            tbBotChips2.Text = "Chips : " + this.bot2Chips;
-            tbBotChips3.Text = "Chips : " + this.bot3Chips;
-            tbBotChips4.Text = "Chips : " + this.bot4Chips;
-            tbBotChips5.Text = "Chips : " + this.bot5Chips;
-            if (Chips <= 0)
+            tbChips.Text = "chips : " + this.chips;
+            tbBotChips1.Text = "chips : " + this.bot1Chips;
+            tbBotChips2.Text = "chips : " + this.bot2Chips;
+            tbBotChips3.Text = "chips : " + this.bot3Chips;
+            tbBotChips4.Text = "chips : " + this.bot4Chips;
+            tbBotChips5.Text = "chips : " + this.bot5Chips;
+            if (chips <= 0)
             {
                 Pturn = false;
                 PFturn = true;
@@ -3234,7 +3238,7 @@
                 up--;
             }
 
-            if (Chips >= call)
+            if (chips >= call)
             {
                 bCall.Text = "Call " + this.call;
             }
@@ -3256,7 +3260,7 @@
                 bCall.Enabled = false;
             }
 
-            if (Chips <= 0)
+            if (chips <= 0)
             {
                 bRaise.Enabled = false;
             }
@@ -3265,7 +3269,7 @@
 
             if (tbRaise.Text != string.Empty && int.TryParse(tbRaise.Text, out parsedValue))
             {
-                if (Chips <= int.Parse(tbRaise.Text))
+                if (chips <= int.Parse(tbRaise.Text))
                 {
                     bRaise.Text = "All in";
                 }
@@ -3275,7 +3279,7 @@
                 }
             }
 
-            if (Chips < call)
+            if (chips < call)
             {
                 bRaise.Enabled = false;
             }
@@ -3298,7 +3302,7 @@
             }
             else
             {
-                // pStatus.Text = "All in " + Chips;
+                // pStatus.Text = "All in " + chips;
                 bCheck.Enabled = false;
             }
 
@@ -3308,10 +3312,10 @@
         private async void bCall_Click(object sender, EventArgs e)
         {
             Rules(0, 1, "Player", ref pType, ref pPower, PFturn);
-            if (Chips >= call)
+            if (chips >= call)
             {
-                Chips -= call;
-                tbChips.Text = "Chips : " + this.Chips;
+                chips -= call;
+                tbChips.Text = "chips : " + this.chips;
                 if (tbPot.Text != string.Empty)
                 {
                     tbPot.Text = (int.Parse(tbPot.Text) + call).ToString();
@@ -3325,15 +3329,15 @@
                 pStatus.Text = "Call " + call;
                 pCall = call;
             }
-            else if (Chips <= call && call > 0)
+            else if (chips <= call && call > 0)
             {
-                tbPot.Text = (int.Parse(tbPot.Text) + Chips).ToString();
-                pStatus.Text = "All in " + Chips;
-                Chips = 0;
-                tbChips.Text = "Chips : " + this.Chips;
+                tbPot.Text = (int.Parse(tbPot.Text) + chips).ToString();
+                pStatus.Text = "All in " + chips;
+                chips = 0;
+                tbChips.Text = "chips : " + this.chips;
                 Pturn = false;
                 bFold.Enabled = false;
-                pCall = Chips;
+                pCall = chips;
             }
 
             await Turns();
@@ -3345,7 +3349,7 @@
             int parsedValue;
             if (tbRaise.Text != string.Empty && int.TryParse(tbRaise.Text, out parsedValue))
             {
-                if (Chips > call)
+                if (chips > call)
                 {
 	                if (Raise * 2 > int.Parse(tbRaise.Text))
                     {
@@ -3354,25 +3358,25 @@
                         return;
                     }
 
-	                if (this.Chips >= int.Parse(this.tbRaise.Text))
+	                if (this.chips >= int.Parse(this.tbRaise.Text))
 	                {
 		                this.call = int.Parse(this.tbRaise.Text);
 		                this.Raise = int.Parse(this.tbRaise.Text);
 		                this.pStatus.Text = "Raise " + this.call;
 		                this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.call).ToString();
 		                this.bCall.Text = "Call";
-		                this.Chips -= int.Parse(this.tbRaise.Text);
+		                this.chips -= int.Parse(this.tbRaise.Text);
 		                this.raising = true;
 		                this.last = 0;
 		                this.pRaise = Convert.ToInt32(this.Raise);
 	                }
 	                else
 	                {
-		                this.call = this.Chips;
-		                this.Raise = this.Chips;
-		                this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.Chips).ToString();
+		                this.call = this.chips;
+		                this.Raise = this.chips;
+		                this.tbPot.Text = (int.Parse(this.tbPot.Text) + this.chips).ToString();
 		                this.pStatus.Text = "Raise " + this.call;
-		                this.Chips = 0;
+		                this.chips = 0;
 		                this.raising = true;
 		                this.last = 0;
 		                this.pRaise = Convert.ToInt32(this.Raise);
@@ -3394,7 +3398,7 @@
             if (tbAdd.Text == string.Empty) { }
             else
             {
-                Chips += int.Parse(tbAdd.Text);
+                chips += int.Parse(tbAdd.Text);
                 bot1Chips += int.Parse(tbAdd.Text);
                 bot2Chips += int.Parse(tbAdd.Text);
                 bot3Chips += int.Parse(tbAdd.Text);
@@ -3402,7 +3406,7 @@
                 bot5Chips += int.Parse(tbAdd.Text);
             }
 
-            tbChips.Text = "Chips : " + this.Chips;
+            tbChips.Text = "chips : " + this.chips;
         }
 
         private void bOptions_Click(object sender, EventArgs e)
