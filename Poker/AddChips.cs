@@ -6,7 +6,7 @@
 
 	public partial class AddChips : Form
     {
-        public int a;
+        public int currentChips;
         public AddChips()
         {
             FontFamily fontFamily = new FontFamily("Arial");
@@ -30,7 +30,7 @@
             }
             else if (int.TryParse(chip_txt.Text, out parsedValue) && int.Parse(chip_txt.Text) <= 100000000)
             {
-                a = int.Parse(chip_txt.Text);
+                currentChips = int.Parse(chip_txt.Text);
                 this.Close();
             }
         }
